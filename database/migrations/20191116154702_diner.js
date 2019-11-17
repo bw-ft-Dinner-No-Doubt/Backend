@@ -48,16 +48,16 @@ exports.up = function(knex, Promise) {
     .createTable('dinnerWheel', tbl => {
       tbl.increments();
 
-      tbl.string('slot 1', 64);
-      tbl.string('slot 2', 64);
-      tbl.string('slot 3', 64);
-      tbl.string('slot 4', 64);
-      tbl.string('slot 5', 64);
-      tbl.string('slot 6', 64);
-      tbl.string('slot 7', 64);
-      tbl.string('slot 8', 64);
-      tbl.string('slot 9', 64);
-      tbl.string('slot 10', 64);
+      tbl.string('slot1', 64);
+      tbl.string('slot2', 64);
+      tbl.string('slot3', 64);
+      tbl.string('slot4', 64);
+      tbl.string('slot5', 64);
+      tbl.string('slot6', 64);
+      tbl.string('slot7', 64);
+      tbl.string('slot8', 64);
+      tbl.string('slot9', 64);
+      tbl.string('slot10', 64);
       tbl.integer('restaurant_id')
       .unsigned()
       .notNullable()

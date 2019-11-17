@@ -7,14 +7,15 @@ const dinerRouter = require('../diner/diner-router');
 const restaurantRouter = require('../restaurants/restaurant-router');
 const foodPrefRouter = require('../foodPref/foodPref-router');
 const platformPrefRouter = require('../platformPref/platformPref-router');
-// const dinnerWheelRouter = require('../dinnerWheel/dinnerWheel-router');
+const dinnerWheelRouter = require('../dinnerWheel/dinnerWheel-router');
 
 router.use('/auth', authRouter);
 router.use('/diner', dinerRouter);
 router.use('/restaurant', restaurantRouter);
 router.use('/foodpref', foodPrefRouter);
 router.use('/platform', platformPrefRouter);
-// router.use('/wheel', dinnerWheelRouter);
+router.use('/wheel', dinnerWheelRouter);
+
 
 router.get('/', (req, res) => {
     res.json({ api: "Running"});
