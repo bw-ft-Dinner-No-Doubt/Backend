@@ -10,33 +10,33 @@ module.exports = {
 };
 
 function find() {
-  return db('platformPref').select('name', 'diner_id');
+  return db('foodPref').select('spicy', 'vegetarian', 'vegan', 'femaleOwned', 'diner_id');
 }
 
 function findBy(filter) {
-  return db('platformPref').where(filter);
+  return db('foodPref').where(filter);
 }
 
-async function add(platformPref) {
-  const [id] = await db('platformPref').insert(platformPref);
+async function add(foodPref) {
+  const [id] = await db('foodPref').insert(foodPref);
 
   return findById(id);
 }
 
 function findById(id) {
-  return db('platformPref')
+  return db('foodPref')
     .where({ id })
     .first();
 }
 
 function update(changes, id){
-  return db('platformPref')
+  return db('foodPref')
   .where({ id: id })
   .update(changes, id);
 }
 
 function remove(id){
-  return db('platformPref')
+  return db('foodPref')
   .where('id', id)
   .del();
 }

@@ -1,14 +1,14 @@
 const router = require('express').Router();
 
-const platformPref = require('./platformPref-model');
+const foodPref = require('./foodPref-model');
 // const restricted = require('../auth/restricted-middleware');
 
 //GET
 router.get('/', (req, res) => {
     
-    platformPref.find()
-    .then(platform => {
-        res.json(platform);
+    foodPref.find()
+    .then(pref => {
+        res.json(pref);
     })
     .catch(err => res.send(err));
 });
@@ -17,29 +17,29 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
     const { id } = req.params;
 
-    platformPref.findById(id)
-    .then(platform => {
-        if(platform){
-            res.json(platform);
+    foodPref.findById(id)
+    .then(pref => {
+        if(pref){
+            res.json(pref);
         } else {
-            res.status(404).json({ message: 'could not find platform with that id'})
+            res.status(404).json({ message: 'could not find food preference with that id'})
         }
     })
     .catch(err => {
-        res.status(500).json({ message: "Failed to get platform"})
+        res.status(500).json({ message: "Failed to get food preference"})
     });
 });
 
 //POST
 router.post('/', (req, res) => {
-    const restaurantData = req.body;
+    const prefData = req.body;
 
-    platformPref.add(restaurantData)
-    .then(platform => {
-        res.status(201).json(platform);
+    foodPref.add(prefData)
+    .then(pref => {
+        res.status(201).json(pref);
     })
     .catch(err => {
-        res.status(500).json({ message: "Failed to create new platform"})
+        res.status(500).json({ message: "Failed to create new food preference"})
     });
 });
 
@@ -49,19 +49,19 @@ router.put('/:id', (req, res) => {
     const { id } = req.params;
     const changes = req.body;
 
-    platformPref.findById(id)
-    .then(platform => {
-        if(platform){
-            platformPref.update(changes, id)
-            .then(updatedPlatform => {
-                res.json(updatedPlatform);
+    foodPref.findById(id)
+    .then(pref => {
+        if(pref){
+            foodPref.update(changes, id)
+            .then(updatedPref => {
+                res.json(updatedPref);
             });
         } else {
-            res.status(404).json({ message: "Could not find a platform with given id"})
+            res.status(404).json({ message: "Could not find a food preference with given id"})
         }
     })
     .catch(err => {
-        res.status(500).json({ message: "Failed to update platform"})
+        res.status(500).json({ message: "Failed to update food preference"})
     });
 });
 
@@ -69,16 +69,16 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
     const { id } = req.params;
 
-    platformPref.remove(id)
+    foodPref.remove(id)
     .then(deleted => {
         if(deleted){
             res.json({ removed: deleted });
         } else {
-            res.status(404).json({ message: "Could not find a platform with given id"})
+            res.status(404).json({ message: "Could not find a food preference with given id"})
         }
     })
     .catch(err => {
-        res.status(500).json({ message: "Failed to delete platform"})
+        res.status(500).json({ message: "Failed to delete food preference"})
     });
 });
 
