@@ -10,33 +10,33 @@ module.exports = {
 };
 
 function find() {
-  return db('diner').select('id', 'username', 'password', 'email', 'streetAddress', 'city', 'state', 'zipcode');
+  return db('restaurant').select('name', 'category', 'recentHistory');
 }
 
 function findBy(filter) {
-  return db('diner').where(filter);
+  return db('restaurant').where(filter);
 }
 
-async function add(diner) {
-  const [id] = await db('diner').insert(diner);
+async function add(restaurant) {
+  const [id] = await db('restaurant').insert(restaurant);
 
   return findById(id);
 }
 
 function findById(id) {
-  return db('diner')
+  return db('restaurant')
     .where({ id })
     .first();
 }
 
 function update(changes, id){
-  return db('diner')
+  return db('restaurant')
   .where({ id: id })
   .update(changes, id);
 }
 
 function remove(id){
-  return db('diner')
+  return db('restaurant')
   .where('id', id)
   .del();
 }

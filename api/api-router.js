@@ -4,9 +4,11 @@ const bcrypt = require('bcryptjs');
 
 const authRouter = require('../auth/auth-router');
 const dinerRouter = require('../diner/diner-router');
+const restaurantRouter = require('../restaurants/restaurant-router');
 
 router.use('/auth', authRouter);
 router.use('/diner', dinerRouter);
+router.use('/restaurant', restaurantRouter);
 
 router.get('/', (req, res) => {
     res.json({ api: "Running"});

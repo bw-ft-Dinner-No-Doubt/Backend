@@ -10,8 +10,8 @@ module.exports = (req, res, next) => {
         //check that token is valid and un modified
         jwt.verify(token, secret, (err, decodedToken) => {
             if(err){
-                //token was tampered with
-                res.status(403).json({ message: 'we do not tolerate this kind of activity'});
+                
+                res.status(403).json({ message: 'Please login'});
             } else {
                 req.decodedJwt = decodedToken;
                 next();

@@ -5,6 +5,7 @@ const restricted = require('../auth/restricted-middleware');
 
 //GET
 router.get('/', restricted, checkRole('diner', 'admin'), (req, res) => {
+    
     Diner.find()
     .then(diner => {
         res.json(diner);
@@ -13,7 +14,7 @@ router.get('/', restricted, checkRole('diner', 'admin'), (req, res) => {
 });
 
 //GET BY ID
-router.get('/:id', (req, res) => {
+router.get('/:id', restricted, (req, res) => {
     const { id } = req.params;
 
     Diner.findById(id)
