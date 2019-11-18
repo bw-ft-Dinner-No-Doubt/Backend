@@ -18,7 +18,7 @@ router.use('/wheel', dinnerWheelRouter);
 
 
 router.get('/', (req, res) => {
-    res.json({ api: "Running"});
+    res.json({ api: "running"});
 });
 
 router.post('/hash', (req, res) => {
